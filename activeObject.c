@@ -72,10 +72,8 @@ Queue *getQueue(ActiveObject *activeObj)
 
 void stopActiveObject(ActiveObject *activeObj)
 {
-    pthread_mutex_lock(&activeObj->queue->lock);
-    activeObj->stop = 1;
-    pthread_cond_signal(&activeObj->queue->cond);
-    pthread_mutex_unlock(&activeObj->queue->lock);
+    activeObj->stop = 1; // stop the loop in the run nicely
+    pthread_cancel((pthread_t)(activeObj->thread)); // force stop the loop by cancel thread
     pthread_join((pthread_t)(activeObj->thread), NULL);
     freeQueue(activeObj->queue);
     free(activeObj);
