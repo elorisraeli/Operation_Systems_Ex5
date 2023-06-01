@@ -96,7 +96,7 @@ void thirdFunc(void *data)
 void forthFunc(void *data)
 {
     int *number = (int *)data;
-    printf("%d\n%s\n", *number, is_prime(*number) ? "true" : "false");
+    printf("%d\n", *number);
     *number += 2;
     printf("%d\n", *number);
 
