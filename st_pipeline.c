@@ -99,5 +99,4 @@ void forthFunc(void *data)
     printf("%d\n", *number);
     *number += 2;
     printf("%d\n", *number);
-
 }
